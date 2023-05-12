@@ -1,0 +1,122 @@
+.user-container {
+  width: 60vw;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.user-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-container {
+  right: 15px;
+  top: 15px;
+}
+
+.table-container {
+  margin: 0 auto;
+}
+
+.user-header {
+  text-align: bottom;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.big-font {
+  font-size: 40px;
+}
+
+.info {
+  margin-bottom: 20px;
+  margin-right: 100px;
+  vertical-align: center;
+}
+
+.profiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.image-container:hover .tooltip {
+  opacity: 1;
+}
+
+.job-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.job-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 20px;
+  align-self: flex-start;
+}
+
+.job-description {
+  font-size: 14px;
+  color: black;
+  flex-grow: 1;
+}
+
+.job-header {
+  font-size: 18px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.job-date {
+  font-size: 14px;
+  color: #999;
+  margin-top: 10px;
+}
+
+.job-description-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-job-icons {
+  display: flex;
+  width: 70px;
+  gap: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .user-container {
+    width: 100vw;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+
+  .job-icon::before {
+    padding-right:  1rem;
+  }
+}

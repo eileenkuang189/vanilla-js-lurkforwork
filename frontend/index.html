@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- You can add your styles and scripts here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/global.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/user.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/feed.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/job.css" />
+</head>
+
+<body>
+    <header>
+        <!-- Nav Bar -->
+        <nav class="navbar nav-style" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand nav-text" id="nav-bar-home">
+                    <img src="assets/logo.png" alt="Logo" width="35" height="35" class="margin-right" />
+                    LurkForWork
+                </a>
+                <div>
+                    <a class="navbar-brand image-container" id="nav-bar-profile">
+                        <i class="bi bi-person-square nav-icon" aria-label="Profile icon">
+                        </i>
+                        <span class="tooltip">My Profile</span>
+                    </a>
+                    <a class="navbar-brand image-container" id="nav-bar-logout">
+                        <i class="bi bi-box-arrow-right nav-icon" aria-label="Log out icon">
+                        </i>
+                        <span class="tooltip">Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section aria-label="Login Screen">
+            <!-- Login Screen -->
+            <div id="login-screen">
+                <form id="login-form" name="login-form">
+                    <h1>Login</h1>
+                    <label for="login-email">Email:</label>
+                    <input type="text" id="email" aria-label="Enter your email" required />
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="password" aria-label="Enter your password" required />
+                    <div role="login-alert" aria-live="assertive" aria-atomic="true">
+                        <p id="login-error-message" class="alert-error"></p>
+                    </div>
+                    <p class="disclaimer">
+                        By clicking Agree & Join, you agree to the LurkforWork User
+                        Agreement, Privacy Policy and Cookie Policy.
+                    </p>
+                    <button class="main-button" type="submit" id="login" aria-label="Login">
+                        Login
+                    </button>
+                    <!-- Divider -->
+                    <div class="divider"><span>or</span></div>
+                    <button class="alternate-button" type="submit" id="swap-to-register">
+                        Register
+                    </button>
+                </form>
+            </div>
+        </section>
+        <section aria-label="Register Screen">
+            <!-- Register Screen -->
+            <div id="register-screen" class="hidden">
+                <form id="register-form" name="register-form">
+                    <h1>Register</h1>
+                    <label for="register-email">Email:</label>
+                    <input type="text" id="register-email" aria-label="Register your email" required />
+                    <label for="name">Name:</label>
+                    <input type="text" id="register-name" aria-label="Register your name" required />
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" aria-label="Register your password" required />
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" aria-label="Confirm your password" required />
+                    <div role="login-alert" aria-live="assertive" aria-atomic="true">
+                        <p id="register-error-message" class="alert-error"></p>
+                    </div>
+                    <button class="login-button" type="submit" id="register">
+                        Register
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="divider"><span>or</span></div>
+                    <button class="alternate-button" type="submit" id="go-back">
+                        Go Back
+                    </button>
+                </form>
+            </div>
+        </section>
+        <section aria-label="Feed Screen">
+            <!-- Feed Screen -->
+            <div id="feed-screen" class="hidden nav-padding">
+                <div class="feed-container">
+                    <div class="feed-left">
+                        <div class="feed-side-buttons">
+                            <img id="logged-in-name-pp" class="profile-picture-size"
+                                alt="Logged In User Profile Picture" />
+                            <p id="logged-in-name" class="logged-in-name"></p>
+                            <button class="alternate-button feed-button-width" id="side-button-watch-user"
+                                data-bs-toggle="modal" data-bs-target="#watch-user-from-feed-button">
+                                <i class="bi bi-eye-fill" aria-label="Eye icon"></i>
+                                Watch A User
+                            </button>
+                            <button class="main-button feed-button-width" id="post-a-job" data-bs-toggle="modal"
+                                data-bs-target="#post-job">
+                                <i class="bi bi-pencil-square" aria-label="Edit icon"></i>
+                                Post a Job
+                            </button>
+                        </div>
+                    </div>
+                    <div class="feed-right">
+                        <div class="feed-header">
+                            <p>Job Feed</p>
+                            <img src="assets/job.png" alt="joblogo" height="40px" />
+                        </div>
+                        <div class="alert-error" id="new-post">New Job Posted! Refresh your Feed Page to see it!</div>
+                        <div id="feed"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals -->
+        <div class="modal fade" id="watch-user-from-feed-button">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="watch-user-title">
+                            Watch a User
+                        </h1>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <p>Enter User's Email:</p>
+                            <input type="text" id="watch-user-from-feed-input"
+                                aria-label="Enter the email you want to watch" />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="watch-user-from-feed">
+                            Watch User
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="post-job">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="post-job-title">Post a Job</h1>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="post-job-body">
+                        <form id="create-job-form" name="create-job-form">
+                            <label for="create-title">Job Title:</label>
+                            <input type="text" id="create-title" name="create-title" aria-label="Enter new job title" required />
+                            <label for="start">Start Date:</label>
+                            <input type="text" id="create-start-date" name="create-start-date"
+                                aria-label="Enter the job's start date" placeholder="dd/mm/yyyy" required />
+                            <label for="create-description">Job Description:</label>
+                            <textarea id="create-description" name="create-description"
+                                aria-label="Enter the job's description" required></textarea>
+                            <label for="register-image">Upload Image:</label>
+                            <input type="file" id="create-image" name="create-image" aria-label="Enter the job's image"
+                                required />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-job-post">
+                            Submit Job
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="update-job">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="update-job-title">Update Job</h1>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="post-job-body">
+                        <form id="update-job-form" name="update-job-form">
+                            <label for="update-title">Job Title:</label>
+                            <input type="text" id="update-title" name="update-title" aria-label="Update the job's title" required />
+                            <label for="start">Start Date:</label>
+                            <input type="text" id="update-start-date" name="update-start-date" placeholder="dd/mm/yyyy"
+                                aria-label="Update the job's start date" required />
+                            <label for="update-description">Job Description:</label>
+                            <textarea id="update-description" name="update-description"
+                                aria-label="Update the job's description" required></textarea>
+                            <label for="register-image">Upload Image:</label>
+                            <input type="file" id="update-image" name="update-image" aria-label="Update the job's image" required />
+                        </form>
+                        <p id="success-msg" class="hidden">Success!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-job-updates" data-bs-dismiss="alert">
+                            Submit Updates
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section aria-label="User Screen">
+            <!-- User Screen -->
+            <div id="user-screen" class="hidden nav-padding">
+                <div class="user-container user-flex">
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img id="user-profile-pic" alt="User Profile Picture" width="100px" height="100px" />
+                                </td>
+                                <td>
+                                    <p class="user-header big-font" id="user-name"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="info">User Id</span></td>
+                                <td><span id="user-id"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="info">Email</span></td>
+                                <td><span id="user-email"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="icon-container">
+                        <div class="image-container" width="30px" height="30px">
+                            <i id="watch-profile"></i>
+                            <span class="tooltip" id="watch-profile-tooltip"></span>
+                        </div>
+                        <div class="image-container" width="30px" height="30px">
+                            <i id="edit-profile"></i>
+                            <span class="tooltip" id="edit-profile-tooltip">Edit Profile</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-container" id="user-job-container">
+                    <p class="user-header">Jobs</p>
+                    <div id="user-jobs"></div>
+                </div>
+                <div class="user-container">
+                    <p class="user-header" id="watching-users"></p>
+                    <div id="user-watchers" class="profiles"></div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Edit Profile Screen">
+            <!-- Edit Profile Screen -->
+            <div id="edit-profile-screen" class="hidden">
+                <form id="edit-profile-form" name="edit-profile-form">
+                    <h1>Edit Profile</h1>
+                    <label for="edit-email">Email:</label>
+                    <input type="text" id="edit-email" name="edit-email" aria-label="Edit your email" required />
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="edit-password" name="edit-password" aria-label="Edit your password" required />
+                    <label for="name">Name:</label>
+                    <input type="text" id="edit-name" name="edit-name" aria-label="Edit your name" required />
+                    <label for="edit-image">Image:</label>
+                    <input type="file" id="edit-image" name="edit-image" aria-label="Edit your image" required />
+                    <button class="main-button" type="submit" id="update-profile">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <img src="assets/bluelogo.png" alt="Logo" width="30" height="30" class="margin-right-10px" />
+        <span>&copy; 2023 LurkForWork | By Eileen Kuang & Leo Shi</span>
+    </footer>
+
+    <script type="module" src="src/login.js"></script>
+    <script type="module" src="src/user.js"></script>
+    <script type="module" src="src/feed.js"></script>
+    <script type="module" src="src/job.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

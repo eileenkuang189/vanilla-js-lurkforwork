@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Like/Dislike Button Example</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		.like-button {
+			padding: 5px 10px;
+			border: 1px solid #ccc;
+			background-color: #fff;
+			cursor: pointer;
+		}
+		.like-button.liked {
+			background-color: #00bfff;
+			color: #fff;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+			// initial like count
+			var likeCount = 0;
+			// initial button state
+			var buttonState = 'like';
+
+			// function to update the like count on the page
+			function updateLikeCount() {
+				$('#like-count').text(likeCount + ' likes');
+			}
+
+			// function to update the button state and text
+			function updateButtonState() {
+				if (buttonState == 'like') {
+					$('#like-button').removeClass('like-button').addClass('like-button liked').text('Dislike');
+				} else {
+					$('#like-button').removeClass('like-button liked').addClass('like-button').text('Like');
+				}
+			}
+
+			// function to handle the click event on the like button
+			function handleButtonClick() {
+				if (buttonState == 'like') {
+					likeCount++;
+					buttonState = 'dislike';
+				} else {
+					likeCount--;
+					buttonState = 'like';
+				}
+				updateLikeCount();
+				updateButtonState();
+			}
+
+			// attach the click event handler to the like button
+			$('#like-button').click(handleButtonClick);
+		});
+	</script>
+</head>
+<body>
+	<h1>Like/Dislike Button Example</h1>
+	<p id="like-count">0 likes</p>
+	<div id="like-button" class="like-button">Like</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.modal-body  {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-body > form {
+    margin: 0;
+    align-items: flex-start;
+}
+
+placeholder > form {
+    color: grey; 
+    font-style: italic; 
+  }
+
+.modal-footer > .btn-primary:hover  {
+    background-color: grey;
+}
