@@ -1,6 +1,6 @@
 # Vanilla JS Project: LurkForWork
 
-A single page app for a UNSW rip-off version of the popular professional social networking tool, LinkedIn.
+A single page app for a UNSW adaptation of the popular professional social networking tool, LinkedIn.
 
 
 ## Features
