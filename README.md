@@ -9,7 +9,7 @@ A single page app for a UNSW adaptation of the popular professional social netwo
  * Feed pagination and live updates by polling
  * Viewing and watching user profiles
  * Adding, updating and deleting job posting
- * 
+
 
 ## Running the project locally
 ### The Frontend
